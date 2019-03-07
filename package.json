@@ -1,0 +1,26 @@
+{
+  "name": "spa-demo",
+  "version": "1.0.0",
+  "description": "从零开始构建一个SPA应用",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youkinn/spa-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youkinn/spa-demo/issues"
+  },
+  "homepage": "https://github.com/youkinn/spa-demo#readme",
+  "dependencies": {
+    "path-to-regexp": "^3.0.0",
+    "underscore": "^1.9.1"
+  }
+}
