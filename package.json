@@ -1,12 +1,13 @@
 {
   "name": "spa-demo",
-  "version": "1.0.0",
+  "version": "1.14.0",
   "description": "从零开始构建一个SPA应用",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
