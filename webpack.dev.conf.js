@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // extract-text-webpack-plugin在webpack4中不好用
 const config = require("./config/index.js");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 const HOST = process.env.HOST;
 const PORT = (process.env.PORT && Number(process.env.PORT)) || 3000;
@@ -16,7 +17,7 @@ module.exports = {
   mode: "development",
   entry: {
     // 入口文件
-    app: "./app.js"
+    app: "./src/app.js",
   },
   // 开发服务器，能实时重新加载
   devServer: {
@@ -47,8 +48,16 @@ module.exports = {
       // 使用babel-loader在webpack打包时处理js文件
       {
         test: /\.js$/,
-        loader: "babel-loader",
-        include: [path.resolve(__dirname, "src")]
+        // loader: "babel-loader",
+        include: [path.resolve(__dirname, "src")],
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['lodash']
+          }
+        }
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -69,6 +78,15 @@ module.exports = {
           },
           { loader: "sass-loader" }
         ]
+      },
+      {
+        test: /\.html$/,
+        use: [ {
+          loader: 'html-loader',
+          options: {
+            minimize: true
+          }
+        }],
       }
     ]
   },
@@ -88,6 +106,7 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin,
+  ],
 };
