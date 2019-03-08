@@ -1,6 +1,6 @@
 {
   "name": "spa-demo",
-  "version": "v1.21.1",
+  "version": "1.13.0",
   "description": "从零开始构建一个SPA应用",
   "main": "index.js",
   "directories": {
