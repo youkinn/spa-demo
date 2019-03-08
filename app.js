@@ -1,3 +1,8 @@
-import _ from 'lodash';
+import Router from "./lib/router";
+import _ from "lodash";
+import $ from "jquery";
+import "./assets/scss/home.scss";
 
-console.log(_.forEach);
+$.ajax("/api/test").then(function(data) {
+  alert(data);
+});
