@@ -48,16 +48,14 @@ module.exports = {
       // 使用babel-loader在webpack打包时处理js文件
       {
         test: /\.js$/,
-        // loader: "babel-loader",
-        include: [path.resolve(__dirname, "src")],
-        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
             plugins: ['lodash']
           }
-        }
+        },
+        include: [path.resolve(__dirname, "src")],
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -81,7 +79,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        use: [ {
+        use: [{
           loader: 'html-loader',
           options: {
             minimize: true

@@ -8,31 +8,26 @@ var router = new Router({
     {
       name: 'home',
       path: '/home',
-      template: './pages/page1.html',
       callback: function () {
-        require.ensure([], function (a, b, c) {
-          var compiled = _.template(require('./pages/page1.html'));
-          var html = compiled({ 'title': '成功啦' });
+        require.ensure([], () => {
+          const render = _.template(require('./pages/page1.html'));
+          const data = require('./js/page1.js');
+          const html = render(data);
           document.getElementById('app').innerHTML = html;
-        })
+        });
       }
     },
     {
       name: 'about',
       path: '/about',
       callback: function () {
-        require.ensure([], function (a, b, c) {
-          var compiled = _.template(require('./pages/page1.html'));
-          var html = compiled({ 'title': '成功啦2' });
+        require.ensure([], () => {
+          const render = _.template(require('./pages/page2.html'));
+          const data = require('./js/page2.js');
+          const html = render(data);
           document.getElementById('app').innerHTML = html;
-        })
+        });
       }
     }
   ]
 });
-
-router.emit('route:home');
-setTimeout(() => {
-  router.emit('route:about');
-}, 2000);
-
