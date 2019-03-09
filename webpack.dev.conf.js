@@ -8,7 +8,6 @@ const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 const HOST = process.env.HOST;
 const PORT = (process.env.PORT && Number(process.env.PORT)) || 3000;
-console.log(PORT);
 
 const devMode = process.env.NODE_ENV !== "production";
 
@@ -48,14 +47,15 @@ module.exports = {
       // 使用babel-loader在webpack打包时处理js文件
       {
         test: /\.js$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['lodash']
-          }
-        },
-        include: [path.resolve(__dirname, "src")],
+        loader: 'babel-loader',
+        // use: {
+        //   loader: 'babel-loader',
+        //   options: {
+        //     presets: ['@babel/preset-env'],
+        //     plugins: ['lodash']
+        //   }
+        // },
+        include: [path.resolve(__dirname, "src"), path.resolve(__dirname, "lib")],
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -105,6 +105,6 @@ module.exports = {
       chunkFilename: "[id].css"
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new LodashModuleReplacementPlugin,
+    // new LodashModuleReplacementPlugin,
   ],
 };
