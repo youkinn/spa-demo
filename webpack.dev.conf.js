@@ -47,15 +47,17 @@ module.exports = {
       // 使用babel-loader在webpack打包时处理js文件
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        // use: {
-        //   loader: 'babel-loader',
-        //   options: {
-        //     presets: ['@babel/preset-env'],
-        //     plugins: ['lodash']
-        //   }
-        // },
+        // loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            presets: ['@babel/preset-env'],
+            // plugins: ['lodash']
+          }
+        },
         include: [path.resolve(__dirname, "src"), path.resolve(__dirname, "lib")],
+        exclude: /node_modules/,
       },
       {
         test: /\.(sa|sc|c)ss$/,

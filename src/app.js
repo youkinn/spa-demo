@@ -5,7 +5,7 @@ YUI.use(Router);
 
 /**
  * 待处理事项
- * 1.callback里边的东西都是重复的，考虑提出一起处理
+ * 1.callback里边的东西都是重复的，考虑提出一起处理 ok
  * 2.渲染函数已经有了，接着只要监视下data对象应该就可以实现数据绑定
  * 3.每个页面类似于一个组件，有自己的data对象
  */
@@ -14,26 +14,14 @@ let router = new Router({
     {
       name: 'home',
       path: '/home',
-      callback: function () {
-        require.ensure([], () => {
-          const render = YUI.util.template(require('./pages/page1.html'));
-          const data = require('./js/page1.js');
-          const html = render(data);
-          document.getElementById('app').innerHTML = html;
-        });
-      }
+      template: () => require.ensure([], () => require('./pages/page1.html'), 'home.tpl'),
+      controller: () => require.ensure([], () => require('./js/page1.js'), 'home.js')
     },
     {
       name: 'about',
       path: '/about',
-      callback: function () {
-        require.ensure([], () => {
-          const render = YUI.util.template(require('./pages/page2.html'));
-          const data = require('./js/page2.js');
-          const html = render(data);
-          document.getElementById('app').innerHTML = html;
-        });
-      }
+      template: () => require.ensure([], () => require('./pages/page2.html'), 'about.tpl'),
+      controller: () => require.ensure([], () => require('./js/page2.js'), 'about.js')
     }
   ]
 });
