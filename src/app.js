@@ -26,8 +26,6 @@ let router = new Router({
   ]
 });
 
-
-// 还只是个摆设，接下来考虑如果实现数据绑定
 export default new YUI({
   el: "#app",
   router: router
