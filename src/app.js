@@ -1,6 +1,8 @@
 import YUI from "../lib/yui";
 import Router from "../lib/router/index";
 
+YUI.use(Router);
+
 /**
  * 待处理事项
  * 1.callback里边的东西都是重复的，考虑提出一起处理
