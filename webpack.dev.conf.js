@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // extract-text-webpack-plugin在webpack4中不好用
 const config = require("./config/index.js");
-const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
+// const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 const HOST = process.env.HOST;
 const PORT = (process.env.PORT && Number(process.env.PORT)) || 3000;
