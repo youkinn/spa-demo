@@ -3,6 +3,8 @@ import Router from "../lib/router/index";
 
 YUI.use(Router);
 
+var b = {...require("../lib/test")};
+
 /**
  * 待处理事项
  * 1.callback里边的东西都是重复的，考虑提出一起处理 ok
@@ -26,7 +28,7 @@ let router = new Router({
   ]
 });
 
-export default new YUI({
+const app = new YUI({
   el: "#app",
   router: router
 });

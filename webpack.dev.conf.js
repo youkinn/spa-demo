@@ -56,7 +56,7 @@ module.exports = {
             // plugins: ['lodash']
           }
         },
-        include: [path.resolve(__dirname, "src"), path.resolve(__dirname, "lib")],
+        // include: [path.resolve(__dirname, "src"), path.resolve(__dirname, "lib")],
         exclude: /node_modules/,
       },
       {
